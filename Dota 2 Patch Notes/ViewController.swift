@@ -10,26 +10,48 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var bodyLabel: UILabel!
-    
     @IBOutlet var scrollView: UIScrollView!
-    
+
+    var patches = [NewsItem]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "PATCH NOTES"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: bodyLabel.frame.height)
-        bodyLabel.text = """
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.dfasfsaf
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-//Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-"""
+        title = "Loading..." // Set a placeholder title while loading
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        fetchData()
     }
 
+    func fetchData() {
+        guard let url = URL(string: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=570&count=1&maxlength=10000&format=json") else { return }
 
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let appNewsResponse = try decoder.decode(AppNewsResponse.self, from: data)
+                    let appNews = appNewsResponse.appnews
+
+                    // Access news items
+                    for newsItem in appNews.newsitems {
+                        print("Title: \(newsItem.title)")
+                        print("Contents: \(newsItem.contents)")
+
+                        self.patches.append(newsItem)
+
+                        DispatchQueue.main.async { // Update UI on the main thread
+                            self.title = newsItem.title
+                            self.bodyLabel.text = newsItem.contents
+                            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: self.bodyLabel.frame.height)
+                        }
+                    }
+                } catch {
+                    print("JSON decoding error: \(error)")
+                }
+            }
+        }.resume()
+    }
 }
+
 
