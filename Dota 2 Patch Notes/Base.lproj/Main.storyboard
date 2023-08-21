@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="399" height="20.333333333333332"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-64-1p2">
-                                                <rect key="frame" x="20" y="0.0" width="369" height="20.333333333333332"/>
+                                                <rect key="frame" x="15" y="0.0" width="374" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                                             <constraint firstItem="RhM-64-1p2" firstAttribute="top" secondItem="pe4-ik-Qxh" secondAttribute="top" id="Dpk-ZH-FWs"/>
                                             <constraint firstAttribute="bottom" secondItem="RhM-64-1p2" secondAttribute="bottom" id="NdY-UQ-PeF"/>
                                             <constraint firstAttribute="width" constant="399" id="e8x-Tw-K4K"/>
-                                            <constraint firstItem="RhM-64-1p2" firstAttribute="leading" secondItem="pe4-ik-Qxh" secondAttribute="leading" constant="20" id="jWc-Hm-Tl6"/>
+                                            <constraint firstItem="RhM-64-1p2" firstAttribute="leading" secondItem="pe4-ik-Qxh" secondAttribute="leading" constant="15" id="jWc-Hm-Tl6"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -60,6 +60,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2Fg-RC-Yv1"/>
                     <connections>
+                        <outlet property="backgroundView" destination="pe4-ik-Qxh" id="7VE-5F-orI"/>
                         <outlet property="bodyLabel" destination="RhM-64-1p2" id="9KF-zr-OoQ"/>
                         <outlet property="scrollView" destination="GNY-g6-G77" id="NJg-90-NJG"/>
                     </connections>

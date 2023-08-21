@@ -8,23 +8,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var bodyLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
-
-    var patches = [NewsItem]()
-
+    @IBOutlet var backgroundView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Loading..." // Set a placeholder title while loading
-        navigationController?.navigationBar.prefersLargeTitles = true
-
+        
+        view.backgroundColor = .black
+        // Place holder in case API takes longer than expected
+        title = "Loading API..."
+        bodyLabel.text = "Also loading..."
+        
+        // Customizing everything
+        applyCustomizations()
+        
+        // Get data from API and update app
         fetchData()
     }
-
+    
     func fetchData() {
-        guard let url = URL(string: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=570&count=1&maxlength=10000&format=json") else { return }
+        guard let url = URL(string: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=570&count=200&maxlength=10000&format=json") else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {
@@ -33,24 +38,71 @@ class ViewController: UIViewController {
                     let appNewsResponse = try decoder.decode(AppNewsResponse.self, from: data)
                     let appNews = appNewsResponse.appnews
 
-                    // Access news items
-                    for newsItem in appNews.newsitems {
-                        print("Title: \(newsItem.title)")
-                        print("Contents: \(newsItem.contents)")
+                    // Filter news items with titles starting with "Dota 2 Update"
+                    let filteredNewsItems = appNews.newsitems.filter { $0.title.hasPrefix("Dota 2 Update") }
 
-                        self.patches.append(newsItem)
+                    // Access the second news item (assuming at least two items exist)
+                    if filteredNewsItems.count >= 2 {
+                        let newsItem = filteredNewsItems[12] // Access the second news item
+                        // Remove the specified pattern using regular expressions
+                        let pattern = "\\{STEAM_CLAN_IMAGE\\}/[a-zA-Z0-9]+/[a-zA-Z0-9]+\\.png "
+                        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+                        let modifiedContents = regex.stringByReplacingMatches(
+                            in: newsItem.contents,
+                            options: [],
+                            range: NSRange(location: 0, length: newsItem.contents.utf16.count),
+                            withTemplate: ""
+                        )
 
-                        DispatchQueue.main.async { // Update UI on the main thread
+                        // Replace occurrences of "Fixed" with "•Fixed"
+                        let modifiedContentsWithBullet = modifiedContents.replacingOccurrences(of: "Fixed", with: "• Fixed")
+
+                        // Add two newlines after every period (".")
+                        let modifiedContentsWithNewlines = modifiedContentsWithBullet.replacingOccurrences(of: "• Fixed", with: "\n\n• Fixed")
+
+                        // Update UI on the main thread
+                        DispatchQueue.main.async {
+                            self.bodyLabel.text = modifiedContentsWithNewlines
                             self.title = newsItem.title
-                            self.bodyLabel.text = newsItem.contents
-                            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: self.bodyLabel.frame.height)
+                            self.navigationController?.navigationBar.prefersLargeTitles = true
                         }
+
+                        // Print the modified news item details
+                        print("Title: \(newsItem.title)")
+                        print("Modified Contents: \(modifiedContentsWithNewlines)")
                     }
                 } catch {
                     print("JSON decoding error: \(error)")
                 }
             }
         }.resume()
+    }
+
+
+
+    
+    func applyCustomizations() {
+        // Customizing large title
+        if let titleFont = UIFont(name: "Helvetica-Bold", size: 22) {
+            navigationController?.navigationBar.largeTitleTextAttributes = [
+                .font: titleFont,
+                .foregroundColor: UIColor.red
+            ]
+        }
+        
+        // Customizing regular nav bar title
+        navigationController?.navigationBar.titleTextAttributes  = [
+            .foregroundColor: UIColor.red
+        ]
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = .black
+        
+        // Make all backgrounds black
+        backgroundView.backgroundColor = .black
+        scrollView.backgroundColor = .black
+        bodyLabel.backgroundColor = .black
+        bodyLabel.textColor = .lightGray
     }
 }
 
