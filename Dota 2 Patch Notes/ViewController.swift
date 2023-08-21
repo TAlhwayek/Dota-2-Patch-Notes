@@ -41,10 +41,10 @@ class ViewController: UIViewController {
                     // Filter news items with titles starting with "Dota 2 Update"
                     let filteredNewsItems = appNews.newsitems.filter { $0.title.hasPrefix("Dota 2 Update") }
 
-                    // Access the second news item (assuming at least two items exist)
+                    // This should be changed
                     if filteredNewsItems.count >= 2 {
-                        let newsItem = filteredNewsItems[12] // Access the second news item
-                        // Remove the specified pattern using regular expressions
+                        let newsItem = filteredNewsItems[12]
+                        // Remove the unnecessary image text at the beginning of each body
                         let pattern = "\\{STEAM_CLAN_IMAGE\\}/[a-zA-Z0-9]+/[a-zA-Z0-9]+\\.png "
                         let regex = try! NSRegularExpression(pattern: pattern, options: [])
                         let modifiedContents = regex.stringByReplacingMatches(
@@ -54,10 +54,10 @@ class ViewController: UIViewController {
                             withTemplate: ""
                         )
 
-                        // Replace occurrences of "Fixed" with "•Fixed"
+                        // Add a bullet point before each "Fixed"
                         let modifiedContentsWithBullet = modifiedContents.replacingOccurrences(of: "Fixed", with: "• Fixed")
 
-                        // Add two newlines after every period (".")
+                        // Add two newlines after every line
                         let modifiedContentsWithNewlines = modifiedContentsWithBullet.replacingOccurrences(of: "• Fixed", with: "\n\n• Fixed")
 
                         // Update UI on the main thread
@@ -72,15 +72,12 @@ class ViewController: UIViewController {
                         print("Modified Contents: \(modifiedContentsWithNewlines)")
                     }
                 } catch {
-                    print("JSON decoding error: \(error)")
+                    print("JSON decoding error: \(error.localizedDescription)")
                 }
             }
         }.resume()
     }
 
-
-
-    
     func applyCustomizations() {
         // Customizing large title
         if let titleFont = UIFont(name: "Helvetica-Bold", size: 22) {
