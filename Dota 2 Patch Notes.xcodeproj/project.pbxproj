@@ -14,7 +14,6 @@
 		9B3CBBD22A93247B00F17F0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBD12A93247B00F17F0B /* Assets.xcassets */; };
 		9B3CBBD52A93247B00F17F0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBD32A93247B00F17F0B /* LaunchScreen.storyboard */; };
 		9BC1F01C2A93376400501883 /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC1F01B2A93376400501883 /* Patch.swift */; };
-		9BC1F01F2A93729F00501883 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 9BC1F01E2A93729F00501883 /* SwiftSoup */; };
 		9BC1F0212A9378F300501883 /* DotaNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC1F0202A9378F300501883 /* DotaNewsModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BC1F01F2A93729F00501883 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +90,6 @@
 			);
 			name = "Dota 2 Patch Notes";
 			packageProductDependencies = (
-				9BC1F01E2A93729F00501883 /* SwiftSoup */,
 			);
 			productName = "Dota 2 Patch Notes";
 			productReference = 9B3CBBC52A93247900F17F0B /* Dota 2 Patch Notes.app */;
@@ -123,7 +120,6 @@
 			);
 			mainGroup = 9B3CBBBC2A93247900F17F0B;
 			packageReferences = (
-				9BC1F01D2A93729F00501883 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 9B3CBBC62A93247900F17F0B /* Products */;
 			projectDirPath = "";
@@ -316,12 +312,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tonyalhwayek.Dota-2-Patch-Notes";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tonyalhwayek.Dota-Patch-Notes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -344,12 +341,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tonyalhwayek.Dota-2-Patch-Notes";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tonyalhwayek.Dota-Patch-Notes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -379,25 +377,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		9BC1F01D2A93729F00501883 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		9BC1F01E2A93729F00501883 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9BC1F01D2A93729F00501883 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9B3CBBBD2A93247900F17F0B /* Project object */;
 }
