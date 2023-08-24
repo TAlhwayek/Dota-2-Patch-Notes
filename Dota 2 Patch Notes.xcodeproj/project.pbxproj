@@ -13,7 +13,8 @@
 		9B3CBBD02A93247900F17F0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBCE2A93247900F17F0B /* Main.storyboard */; };
 		9B3CBBD22A93247B00F17F0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBD12A93247B00F17F0B /* Assets.xcassets */; };
 		9B3CBBD52A93247B00F17F0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBD32A93247B00F17F0B /* LaunchScreen.storyboard */; };
-		9BC1F01C2A93376400501883 /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC1F01B2A93376400501883 /* Patch.swift */; };
+		9B558F592A9722FA00A166FA /* UpdatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B558F582A9722FA00A166FA /* UpdatesTableViewController.swift */; };
+		9B558F5B2A97273B00A166FA /* SharedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B558F5A2A97273B00A166FA /* SharedDataModel.swift */; };
 		9BC1F0212A9378F300501883 /* DotaNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC1F0202A9378F300501883 /* DotaNewsModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +27,8 @@
 		9B3CBBD12A93247B00F17F0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B3CBBD42A93247B00F17F0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B3CBBD62A93247B00F17F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BC1F01B2A93376400501883 /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
+		9B558F582A9722FA00A166FA /* UpdatesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTableViewController.swift; sourceTree = "<group>"; };
+		9B558F5A2A97273B00A166FA /* SharedDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataModel.swift; sourceTree = "<group>"; };
 		9BC1F0202A9378F300501883 /* DotaNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotaNewsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,7 +46,7 @@
 		9B3CBBBC2A93247900F17F0B = {
 			isa = PBXGroup;
 			children = (
-				9BC1F0202A9378F300501883 /* DotaNewsModel.swift */,
+				9B558F5A2A97273B00A166FA /* SharedDataModel.swift */,
 				9B3CBBC72A93247900F17F0B /* Dota 2 Patch Notes */,
 				9B3CBBC62A93247900F17F0B /* Products */,
 			);
@@ -64,8 +66,9 @@
 				9B3CBBC82A93247900F17F0B /* AppDelegate.swift */,
 				9B3CBBCA2A93247900F17F0B /* SceneDelegate.swift */,
 				9B3CBBCC2A93247900F17F0B /* ViewController.swift */,
+				9B558F582A9722FA00A166FA /* UpdatesTableViewController.swift */,
 				9B3CBBCE2A93247900F17F0B /* Main.storyboard */,
-				9BC1F01B2A93376400501883 /* Patch.swift */,
+				9BC1F0202A9378F300501883 /* DotaNewsModel.swift */,
 				9B3CBBD12A93247B00F17F0B /* Assets.xcassets */,
 				9B3CBBD32A93247B00F17F0B /* LaunchScreen.storyboard */,
 				9B3CBBD62A93247B00F17F0B /* Info.plist */,
@@ -148,10 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B558F5B2A97273B00A166FA /* SharedDataModel.swift in Sources */,
+				9B558F592A9722FA00A166FA /* UpdatesTableViewController.swift in Sources */,
 				9BC1F0212A9378F300501883 /* DotaNewsModel.swift in Sources */,
 				9B3CBBCD2A93247900F17F0B /* ViewController.swift in Sources */,
 				9B3CBBC92A93247900F17F0B /* AppDelegate.swift in Sources */,
-				9BC1F01C2A93376400501883 /* Patch.swift in Sources */,
 				9B3CBBCB2A93247900F17F0B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

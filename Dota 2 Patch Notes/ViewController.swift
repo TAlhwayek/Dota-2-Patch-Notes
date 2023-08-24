@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     func fetchData() {
-        guard let url = URL(string: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=570&count=20&maxlength=10000&format=json") else { return }
+        guard let url = URL(string: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=570&count=200&maxlength=10000&format=json") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {
@@ -39,38 +39,37 @@ class ViewController: UIViewController {
                     let appNews = appNewsResponse.appnews
                     
                     // Filter news items with titles starting with "Dota 2 Update"
-                    let filteredNewsItems = appNews.newsitems.filter { $0.title.hasPrefix("Dota 2 Update") }
+                    var filteredNewsItems = appNews.newsitems.filter { $0.title.hasPrefix("Dota 2 Update") }
+                    SharedDataModel.shared.filteredNewsItems = filteredNewsItems
                     
                     // This should be changed
-                    if filteredNewsItems.count >= 2 {
-                        let newsItem = filteredNewsItems[1]
-                        // Remove the unnecessary image text at the beginning of each body
-                        let pattern = "\\{STEAM_CLAN_IMAGE\\}/[a-zA-Z0-9]+/[a-zA-Z0-9]+\\.png "
-                        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-                        let modifiedContents = regex.stringByReplacingMatches(
-                            in: newsItem.contents,
-                            options: [],
-                            range: NSRange(location: 0, length: newsItem.contents.utf16.count),
-                            withTemplate: ""
-                        )
-                        
-                        // Add a bullet point before each "Fixed"
-                        let modifiedContentsWithBullet = modifiedContents.replacingOccurrences(of: "Fixed", with: "• Fixed")
-                        
-                        // Add two newlines after every line
-                        let modifiedContentsWithNewlines = modifiedContentsWithBullet.replacingOccurrences(of: "• Fixed", with: "\n\n• Fixed")
-                        
-                        // Update UI on the main thread
-                        DispatchQueue.main.async {
-                            self.bodyLabel.text = modifiedContentsWithNewlines
-                            self.title = newsItem.title
-                            self.navigationController?.navigationBar.prefersLargeTitles = true
-                        }
-                        
-                        // Print the modified news item details
-                        print("Title: \(newsItem.title)")
-                        print("Modified Contents: \(modifiedContentsWithNewlines)")
+                    let newsItem = filteredNewsItems[0]
+                    // Remove the unnecessary image text at the beginning of each body
+                    let pattern = "\\{STEAM_CLAN_IMAGE\\}/[a-zA-Z0-9]+/[a-zA-Z0-9]+\\.png "
+                    let regex = try! NSRegularExpression(pattern: pattern, options: [])
+                    let modifiedContents = regex.stringByReplacingMatches(
+                        in: newsItem.contents,
+                        options: [],
+                        range: NSRange(location: 0, length: newsItem.contents.utf16.count),
+                        withTemplate: ""
+                    )
+                    
+                    // Add a bullet point before each "Fixed"
+                    let modifiedContentsWithBullet = modifiedContents.replacingOccurrences(of: "Fixed", with: "• Fixed")
+                    
+                    // Add two newlines after every line
+                    let modifiedContentsWithNewlines = modifiedContentsWithBullet.replacingOccurrences(of: "• Fixed", with: "\n\n• Fixed")
+                    
+                    // Update UI on the main thread
+                    DispatchQueue.main.async {
+                        self.bodyLabel.text = modifiedContentsWithNewlines
+                        self.title = newsItem.title
+                        self.navigationController?.navigationBar.prefersLargeTitles = true
                     }
+                    
+                    // Print the modified news item details
+//                    print("Title: \(newsItem.title)")
+//                    print("Modified Contents: \(modifiedContentsWithNewlines)")
                 } catch {
                     print("JSON decoding error: \(error.localizedDescription)")
                 }
