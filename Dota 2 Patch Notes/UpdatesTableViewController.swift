@@ -9,16 +9,13 @@ import UIKit
 
 class UpdatesTableViewController: UITableViewController {
     
-    var filteredNewsItems = SharedDataModel.shared.filteredNewsItems
+    var filteredNewsItems: [NewsItem] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Previous Updates"
-        view.backgroundColor = .white
-        print(filteredNewsItems.count)
-        
         applyCustomizations()
     }
     
@@ -27,10 +24,9 @@ class UpdatesTableViewController: UITableViewController {
         
         // Update filteredNewsItems with the latest data from SharedDataModel
         filteredNewsItems = SharedDataModel.shared.filteredNewsItems
+        filteredNewsItems.removeFirst()
         tableView.separatorColor = .lightGray
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredNewsItems.count - 1
@@ -41,8 +37,15 @@ class UpdatesTableViewController: UITableViewController {
         cell.textLabel?.text = filteredNewsItems[indexPath.row].title
         cell.backgroundColor = .black
         cell.textLabel?.textColor = .red
-        print(filteredNewsItems[indexPath.row].title)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailVC") as? PatchDetailViewController {
+            detailVC.patchTitle = filteredNewsItems[indexPath.row].title
+            detailVC.body = filteredNewsItems[indexPath.row].contents
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     
     func applyCustomizations() {

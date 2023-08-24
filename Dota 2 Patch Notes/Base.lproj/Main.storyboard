@@ -120,6 +120,21 @@
             </objects>
             <point key="canvasLocation" x="2027" y="375"/>
         </scene>
+        <!--Patch Detail View Controller-->
+        <scene sceneID="y6U-Dh-RVQ">
+            <objects>
+                <viewController storyboardIdentifier="DetailVC" id="xRX-Kf-mJM" customClass="PatchDetailViewController" customModule="Dota_2_Patch_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iWY-Ou-rN7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sYH-EU-Yxw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bpd-qa-3hL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3189" y="375"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IUV-nq-Fv0">
             <objects>
@@ -167,6 +182,7 @@
             <point key="canvasLocation" x="1073" y="375"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemRedColor"/>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <systemColor name="systemBackgroundColor">
