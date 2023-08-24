@@ -27,6 +27,7 @@ class UpdatesTableViewController: UITableViewController {
         
         // Update filteredNewsItems with the latest data from SharedDataModel
         filteredNewsItems = SharedDataModel.shared.filteredNewsItems
+        tableView.separatorColor = .lightGray
     }
     
     
