@@ -55,10 +55,8 @@ class ViewController: UIViewController {
                     )
                     
                     // Add a bullet point before each "Fixed"
-                    let modifiedContentsWithBullet = modifiedContents.replacingOccurrences(of: "Fixed", with: "• Fixed")
-                    
-                    // Add two newlines after every line
-                    let modifiedContentsWithNewlines = modifiedContentsWithBullet.replacingOccurrences(of: "• Fixed", with: "\n\n• Fixed")
+                    let modifiedContentsWithNewlines = modifiedContents.replacingOccurrences(of: "Fixed", with: "\n\n• Fixed")
+
                     
                     // Update UI on the main thread
                     DispatchQueue.main.async {

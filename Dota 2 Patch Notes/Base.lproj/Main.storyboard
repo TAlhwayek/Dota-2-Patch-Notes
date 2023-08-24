@@ -120,21 +120,6 @@
             </objects>
             <point key="canvasLocation" x="2027" y="375"/>
         </scene>
-        <!--Patch Detail View Controller-->
-        <scene sceneID="y6U-Dh-RVQ">
-            <objects>
-                <viewController storyboardIdentifier="DetailVC" id="xRX-Kf-mJM" customClass="PatchDetailViewController" customModule="Dota_2_Patch_Notes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iWY-Ou-rN7">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="sYH-EU-Yxw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bpd-qa-3hL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3189" y="375"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IUV-nq-Fv0">
             <objects>
@@ -180,6 +165,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVT-pJ-zOd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1073" y="375"/>
+        </scene>
+        <!--Patch Detail View Controller-->
+        <scene sceneID="33R-wu-ycl">
+            <objects>
+                <viewController storyboardIdentifier="DetailVC" id="bs9-if-NYh" customClass="PatchDetailViewController" customModule="Dota_2_Patch_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Un-P0-VtB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PU5-5q-bwh">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="biz-0Y-BhX">
+                                        <rect key="frame" x="0.0" y="0.0" width="399" height="20.333333333333332"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6k-KG-MAr">
+                                                <rect key="frame" x="15" y="0.0" width="374" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="399" id="1CQ-Q1-jZH"/>
+                                            <constraint firstAttribute="trailing" secondItem="Y6k-KG-MAr" secondAttribute="trailing" constant="10" id="Zca-K0-ugf"/>
+                                            <constraint firstItem="Y6k-KG-MAr" firstAttribute="top" secondItem="biz-0Y-BhX" secondAttribute="top" id="jrP-Rx-D1Y"/>
+                                            <constraint firstItem="Y6k-KG-MAr" firstAttribute="leading" secondItem="biz-0Y-BhX" secondAttribute="leading" constant="15" id="mXc-H1-BbT"/>
+                                            <constraint firstAttribute="bottom" secondItem="Y6k-KG-MAr" secondAttribute="bottom" id="v5d-oz-mcP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="biz-0Y-BhX" secondAttribute="trailing" constant="-6" id="DRj-P6-5Nj"/>
+                                    <constraint firstItem="biz-0Y-BhX" firstAttribute="top" secondItem="FGh-Vc-YHm" secondAttribute="top" id="Q2d-SN-jLy"/>
+                                    <constraint firstAttribute="bottom" secondItem="biz-0Y-BhX" secondAttribute="bottom" constant="24" id="eEf-5o-YzO"/>
+                                    <constraint firstItem="biz-0Y-BhX" firstAttribute="leading" secondItem="PU5-5q-bwh" secondAttribute="leading" id="f4a-M6-p6V"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="FGh-Vc-YHm"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="KEb-FF-uSO"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9jz-y7-zDs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="PU5-5q-bwh" secondAttribute="bottom" constant="-34" id="2HL-qi-SM9"/>
+                            <constraint firstItem="PU5-5q-bwh" firstAttribute="centerX" secondItem="0Un-P0-VtB" secondAttribute="centerX" id="JFR-o6-f8g"/>
+                            <constraint firstItem="PU5-5q-bwh" firstAttribute="top" secondItem="9jz-y7-zDs" secondAttribute="top" id="Ub1-6W-jRf"/>
+                            <constraint firstItem="PU5-5q-bwh" firstAttribute="leading" secondItem="9jz-y7-zDs" secondAttribute="leading" id="zAJ-ql-rBp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bLU-9b-m83"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="biz-0Y-BhX" id="Nab-rE-l9b"/>
+                        <outlet property="bodyLabel" destination="Y6k-KG-MAr" id="Wjt-Kv-s53"/>
+                        <outlet property="scrollView" destination="PU5-5q-bwh" id="hLs-5j-OdM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ad2-xj-Rz5" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3088" y="375"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemRedColor"/>

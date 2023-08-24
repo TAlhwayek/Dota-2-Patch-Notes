@@ -11,7 +11,7 @@ struct NewsItem: Decodable {
     let gid: String
     let title: String
     let url: String
-    let contents: String
+    var contents: String
     let author: String
     let date: Int
     // Add other properties if needed
