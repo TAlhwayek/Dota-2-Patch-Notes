@@ -18,15 +18,13 @@ class PatchDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         title = patchTitle
-        bodyLabel.text = body
+        filterBody()
         view.backgroundColor = .black
         applyCustomizations()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
 
     func applyCustomizations() {
@@ -53,5 +51,11 @@ class PatchDetailViewController: UIViewController {
         bodyLabel.textColor = .lightGray
         
         bodyLabel.isUserInteractionEnabled = true
+    }
+    
+    func filterBody() {
+        let filteredBody = body.replacingOccurrences(of: " Fixed", with: "\n\n• Fixed")
+        let doubleFilteredBody = filteredBody.replacingOccurrences(of: ". ", with: "\n\n")
+        bodyLabel.text = doubleFilteredBody
     }
 }
