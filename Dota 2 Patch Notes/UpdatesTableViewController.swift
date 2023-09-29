@@ -11,7 +11,6 @@ class UpdatesTableViewController: UITableViewController {
     
     var filteredNewsItems: [NewsItem] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,12 +23,13 @@ class UpdatesTableViewController: UITableViewController {
         
         // Update filteredNewsItems with the latest data from SharedDataModel
         filteredNewsItems = SharedDataModel.shared.filteredNewsItems
+        // Remove latest update from array to not show up in previous updates
         filteredNewsItems.removeFirst()
         tableView.separatorColor = .lightGray
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredNewsItems.count - 1
+        return filteredNewsItems.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

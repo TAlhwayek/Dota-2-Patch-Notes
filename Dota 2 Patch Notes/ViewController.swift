@@ -39,10 +39,11 @@ class ViewController: UIViewController {
                     let appNews = appNewsResponse.appnews
                     
                     // Filter news items with titles starting with "Dota 2 Update"
-                    var filteredNewsItems = appNews.newsitems.filter { $0.title.hasPrefix("Dota 2 Update") }
+                    let filteredNewsItems = appNews.newsitems.filter { $0.title.hasPrefix("Dota 2 Update") }
                     SharedDataModel.shared.filteredNewsItems = filteredNewsItems
                     
-                    // This should be changed
+                    //MARK: - This is where I change which update is displayed
+                    // This note is so that I can easily find it
                     let newsItem = filteredNewsItems[0]
                     // Remove the unnecessary image text at the beginning of each body
                     let pattern = "\\{STEAM_CLAN_IMAGE\\}/[a-zA-Z0-9]+/[a-zA-Z0-9]+\\.png "
@@ -53,21 +54,18 @@ class ViewController: UIViewController {
                         range: NSRange(location: 0, length: newsItem.contents.utf16.count),
                         withTemplate: ""
                     )
-                    
                     // Add a bullet point before each "Fixed"
-                    let modifiedContentsWithNewlines = modifiedContents.replacingOccurrences(of: "Fixed", with: "\n\n• Fixed")
-
+                    let modifiedContentsWithNewlines = modifiedContents
+                        .replacingOccurrences(of: "Fixed", with: "\n\n • Fixed")
+                      //  .replacingOccurrences(of: "\r\n", with: "\n\n\n\n\n\n", options: .regularExpression)
                     
+
                     // Update UI on the main thread
                     DispatchQueue.main.async {
                         self.bodyLabel.text = modifiedContentsWithNewlines
                         self.title = newsItem.title
                         self.navigationController?.navigationBar.prefersLargeTitles = true
                     }
-                    
-                    // Print the modified news item details
-//                    print("Title: \(newsItem.title)")
-//                    print("Modified Contents: \(modifiedContentsWithNewlines)")
                 } catch {
                     print("JSON decoding error: \(error.localizedDescription)")
                 }

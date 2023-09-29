@@ -48,8 +48,6 @@
 		9B3CBBBC2A93247900F17F0B = {
 			isa = PBXGroup;
 			children = (
-				9B63F3012A97350B001E7B01 /* PatchDetailViewController.swift */,
-				9B558F5A2A97273B00A166FA /* SharedDataModel.swift */,
 				9B3CBBC72A93247900F17F0B /* Dota 2 Patch Notes */,
 				9B3CBBC62A93247900F17F0B /* Products */,
 			);
@@ -70,6 +68,8 @@
 				9B3CBBCA2A93247900F17F0B /* SceneDelegate.swift */,
 				9B3CBBCC2A93247900F17F0B /* ViewController.swift */,
 				9B558F582A9722FA00A166FA /* UpdatesTableViewController.swift */,
+				9B558F5A2A97273B00A166FA /* SharedDataModel.swift */,
+				9B63F3012A97350B001E7B01 /* PatchDetailViewController.swift */,
 				9B3CBBCE2A93247900F17F0B /* Main.storyboard */,
 				9BC1F0202A9378F300501883 /* DotaNewsModel.swift */,
 				9B3CBBD12A93247B00F17F0B /* Assets.xcassets */,

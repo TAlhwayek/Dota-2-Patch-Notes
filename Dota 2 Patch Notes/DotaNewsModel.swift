@@ -14,7 +14,6 @@ struct NewsItem: Decodable {
     var contents: String
     let author: String
     let date: Int
-    // Add other properties if needed
 }
 
 struct AppNewsResponse: Decodable {
