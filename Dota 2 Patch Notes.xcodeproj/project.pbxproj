@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B3CBBC92A93247900F17F0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CBBC82A93247900F17F0B /* AppDelegate.swift */; };
 		9B3CBBCB2A93247900F17F0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CBBCA2A93247900F17F0B /* SceneDelegate.swift */; };
-		9B3CBBCD2A93247900F17F0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CBBCC2A93247900F17F0B /* ViewController.swift */; };
+		9B3CBBCD2A93247900F17F0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CBBCC2A93247900F17F0B /* MainViewController.swift */; };
 		9B3CBBD02A93247900F17F0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBCE2A93247900F17F0B /* Main.storyboard */; };
 		9B3CBBD22A93247B00F17F0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBD12A93247B00F17F0B /* Assets.xcassets */; };
 		9B3CBBD52A93247B00F17F0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3CBBD32A93247B00F17F0B /* LaunchScreen.storyboard */; };
@@ -23,7 +23,7 @@
 		9B3CBBC52A93247900F17F0B /* Dota 2 Patch Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dota 2 Patch Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3CBBC82A93247900F17F0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B3CBBCA2A93247900F17F0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9B3CBBCC2A93247900F17F0B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9B3CBBCC2A93247900F17F0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9B3CBBCF2A93247900F17F0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B3CBBD12A93247B00F17F0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B3CBBD42A93247B00F17F0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 			children = (
 				9B3CBBC82A93247900F17F0B /* AppDelegate.swift */,
 				9B3CBBCA2A93247900F17F0B /* SceneDelegate.swift */,
-				9B3CBBCC2A93247900F17F0B /* ViewController.swift */,
+				9B3CBBCC2A93247900F17F0B /* MainViewController.swift */,
 				9B558F582A9722FA00A166FA /* UpdatesTableViewController.swift */,
 				9B558F5A2A97273B00A166FA /* SharedDataModel.swift */,
 				9B63F3012A97350B001E7B01 /* PatchDetailViewController.swift */,
@@ -157,7 +157,7 @@
 				9B558F5B2A97273B00A166FA /* SharedDataModel.swift in Sources */,
 				9B558F592A9722FA00A166FA /* UpdatesTableViewController.swift in Sources */,
 				9BC1F0212A9378F300501883 /* DotaNewsModel.swift in Sources */,
-				9B3CBBCD2A93247900F17F0B /* ViewController.swift in Sources */,
+				9B3CBBCD2A93247900F17F0B /* MainViewController.swift in Sources */,
 				9B3CBBC92A93247900F17F0B /* AppDelegate.swift in Sources */,
 				9B3CBBCB2A93247900F17F0B /* SceneDelegate.swift in Sources */,
 				9B63F3022A97350B001E7B01 /* PatchDetailViewController.swift in Sources */,
